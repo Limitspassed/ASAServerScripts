@@ -23,18 +23,31 @@ if (Test-Path $steamCmdPath) {
 }
 
 # Store the start.bat content
-$startBatContent = Read-Host "Enter the start.bat content (e.g., start ArkAscendedServer.exe TheIsland_WP?listen? -UseBattlEye)"
+$startBatContent = Read-Host "Enter the start.bat content (e.g., start ArkAscendedServer.exe TheIsland_WP?listen?SessionName=ServerName?ServerAdminPassword=AdminPassword?Port=7777?QueryPort=27015?MaxPlayers=26 -UseBattlEye)"
 
 # Prompt for the ARK server installation directory
 $installPath = Read-Host "Enter the path where you want to install the ARK server"
 
 # Check if the ARK server path already exists
 if (Test-Path $installPath) {
-    Write-Host "ARK server directory already exists at $installPath. Updating the server..."
+    Write-Host "ARK server directory already exists at $installPath. Proceeding to update ARK server..."
 } else {
     # If it doesn't exist, create the directory and install the ARK server
     New-Item -Path $installPath -ItemType Directory
+    Write-Host "ARK server directory does not exist. Continuing to install ARK server..."
 }
+
+# Create the necessary directory structure
+$gameBinPath = Join-Path $installPath "ShooterGame\Binaries\Win64"
+if (-not (Test-Path $gameBinPath)) {
+    New-Item -Path $gameBinPath -ItemType Directory
+}
+
+# Create start.bat in the Win64 folder
+$startBatPath = Join-Path $gameBinPath "start.bat"
+Set-Content -Path $startBatPath -Value $startBatContent
+
+Write-Host "start.bat has been created in $startBatPath."
 
 # Install or update ARK server
 $arkServerCmd = Join-Path $steamCmdPath "steamcmd.exe"
@@ -44,12 +57,6 @@ $appUpdate = "+app_update 2430930 validate"
 & $arkServerCmd $forceInstallDir "+login anonymous" $appUpdate "+quit"
 
 Write-Host "ARK server installed or updated in $installPath."
-
-# Create start.bat in the Win64 folder
-$startBatPath = Join-Path $installPath "ShooterGame\Binaries\Win64\start.bat"
-Set-Content -Path $startBatPath -Value $startBatContent
-
-Write-Host "start.bat has been created in $startBatPath."
 
 # You can customize the ARK server startup command here
 Write-Host "You can start the ARK server with the following command:"
