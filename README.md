@@ -75,7 +75,6 @@ $mcrconCommand = "D:\rcon\mcrcon\mcrcon.exe -H $serverHost -P $port -p $password
 
 # Execute the mcrcon command
 Invoke-Expression -Command $mcrconCommand
-Feel free to modify and adapt these scripts for your own use.
 ```
 
 ### License
