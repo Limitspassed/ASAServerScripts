@@ -10,17 +10,26 @@ if (-not (Test-Path $steamCmdPath)) {
 $steamCmdUrl = "https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip"
 $steamCmdZip = Join-Path $env:TEMP "steamcmd.zip"
 
-Invoke-WebRequest -Uri $steamCmdUrl -OutFile $steamCmdZip
-Expand-Archive -Path $steamCmdZip -DestinationPath $steamCmdPath
-Remove-Item -Path $steamCmdZip
+# Check if the SteamCMD path already exists
+if (Test-Path $steamCmdPath) {
+    Write-Host "SteamCMD directory already exists at $steamCmdPath."
+} else {
+    # If it doesn't exist, download and extract SteamCMD
+    Invoke-WebRequest -Uri $steamCmdUrl -OutFile $steamCmdZip
+    Expand-Archive -Path $steamCmdZip -DestinationPath $steamCmdPath
+    Remove-Item -Path $steamCmdZip
 
-Write-Host "SteamCMD has been downloaded and extracted to $steamCmdPath."
+    Write-Host "SteamCMD has been downloaded and extracted to $steamCmdPath."
+}
 
 # Prompt for the ARK server installation directory
 $installPath = Read-Host "Enter the path where you want to install the ARK server"
 
-# Create the directory if it doesn't exist
-if (-not (Test-Path $installPath)) {
+# Check if the ARK server path already exists
+if (Test-Path $installPath) {
+    Write-Host "ARK server directory already exists at $installPath. Updating the server..."
+} else {
+    # If it doesn't exist, create the directory and install the ARK server
     New-Item -Path $installPath -ItemType Directory
 }
 
