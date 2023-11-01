@@ -2,6 +2,12 @@
 
 This PowerShell script automates the process of setting up an ARK: Survival Ascended server using SteamCMD on Windows. It allows you to download SteamCMD, install or update the ARK: Survival Ascended server, and create a start.bat file for launching the server.
 
+## Join Our ARK: Survival Ascended Community
+
+Join our Discord server to connect with other players, get updates, and chat with the community. We're here to help and have fun playing together!
+
+[Join Our Discord](https://discord.gg/ce4VPBxxAC)
+
 ## Prerequisites
 
 - Windows operating system
