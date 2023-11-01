@@ -27,7 +27,7 @@ if (-not (Test-Path $installPath)) {
 # Install or update ARK server
 $arkServerCmd = Join-Path $steamCmdPath "steamcmd.exe"
 $forceInstallDir = "+force_install_dir $installPath"
-$appUpdate = "+app_update 376030 validate"
+$appUpdate = "+app_update 2430930 validate"
 
 & $arkServerCmd $forceInstallDir "+login anonymous" $appUpdate "+quit"
 
