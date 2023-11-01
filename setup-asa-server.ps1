@@ -22,6 +22,9 @@ if (Test-Path $steamCmdPath) {
     Write-Host "SteamCMD has been downloaded and extracted to $steamCmdPath."
 }
 
+# Store the start.bat content
+$startBatContent = Read-Host "Enter the start.bat content (e.g., start ArkAscendedServer.exe TheIsland_WP?listen? -UseBattlEye)"
+
 # Prompt for the ARK server installation directory
 $installPath = Read-Host "Enter the path where you want to install the ARK server"
 
@@ -44,7 +47,6 @@ Write-Host "ARK server installed or updated in $installPath."
 
 # Create start.bat in the Win64 folder
 $startBatPath = Join-Path $installPath "ShooterGame\Binaries\Win64\start.bat"
-$startBatContent = "start ArkAscendedServer.exe TheIsland_WP?listen? -UseBattlEye"
 Set-Content -Path $startBatPath -Value $startBatContent
 
 Write-Host "start.bat has been created in $startBatPath."
