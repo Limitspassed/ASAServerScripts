@@ -22,14 +22,14 @@ Before running the script, make sure your PowerShell execution policy is set to 
 Set-ExecutionPolicy Unrestricted
 This is required to run scripts that are not digitally signed.
 
-Run the Script:
+### Run the Script:
 Open a PowerShell terminal and navigate to the directory where the script is located. Run the script by executing:
 
 .\setup-ark-ascended-server.ps1
 Follow Prompts:
 You will be prompted to enter the path where you want to install SteamCMD. If SteamCMD is already installed at the specified path, it will not be re-downloaded. Next, you will be prompted to enter the path where you want to install the ARK: Survival Ascended server. If the directory does not exist, it will be created. The script will download SteamCMD (if needed), install or update the ARK: Survival Ascended server, and create a start.bat file in the Win64 folder for server startup.
 
-Start the ARK: Survival Ascended Server:
+### Start the ARK: Survival Ascended Server:
 After the script completes, you can start the ARK: Survival Ascended server by executing the start.bat file located in the Win64 folder within your installation directory.
 
 For example:
@@ -39,7 +39,7 @@ start.bat
 Customization:
 You can customize the start.bat file with additional server startup options as needed.
 
-ARK: Survival Ascended Server Update Script
+### ARK: Survival Ascended Server Update Script
 This script is used to update an existing ARK: Survival Ascended server. It assumes that SteamCMD and the server files are already installed.
 
 To use the update script, follow the same instructions as above for setting the execution policy, then run the script:
@@ -47,7 +47,7 @@ To use the update script, follow the same instructions as above for setting the 
 .\update-ark-ascended-server.ps1
 You will be prompted to enter the path where the ARK: Survival Ascended server is installed. The script will update the server using AppID 2430930.
 
-Running RCON Commands Example
+### Running RCON Commands Example
 This example script demonstrates how to execute RCON commands on your ARK: Survival Ascended server using mcrcon.
 
 Prerequisites
@@ -68,7 +68,7 @@ $mcrconCommand = "D:\rcon\mcrcon\mcrcon.exe -H $serverHost -P $port -p $password
 Invoke-Expression -Command $mcrconCommand
 Feel free to modify and adapt these scripts for your own use.
 
-License
+### License
 This script is provided under the MIT License.
 
 Please replace "setup-asa-server.ps1" with the actual name of your PowerShell script for setting up the ARK: Survival Ascended server if it's different.
