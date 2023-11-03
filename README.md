@@ -13,6 +13,8 @@ Join our Discord server to connect with other players, get updates, and chat wit
 - Windows operating system
 - PowerShell (Ensure Set-ExecutionPolicy is set to Unrestricted for script execution)
 - Internet connection for downloading SteamCMD and server files
+- DirectX: https://www.microsoft.com/en-us/download/details.aspx?id=35
+- Microsoft Redistributables: https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170
 
 ## Instructions
 
