@@ -6,15 +6,17 @@ if (-not (Test-Path $steamCmdPath)) {
     New-Item -Path $steamCmdPath -ItemType Directory
 }
 
-# Download and extract SteamCMD
-$steamCmdUrl = "https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip"
-$steamCmdZip = Join-Path $env:TEMP "steamcmd.zip"
+# Specify the path to the SteamCMD executable
+$steamCmdExecutable = Join-Path $steamCmdPath "steamcmd.exe"
 
-# Check if the SteamCMD path already exists
-if (Test-Path $steamCmdPath) {
-    Write-Host "SteamCMD directory already exists at $steamCmdPath."
+# Check if SteamCMD is already installed
+if (Test-Path $steamCmdExecutable) {
+    Write-Host "SteamCMD is already installed at $steamCmdPath."
 } else {
     # If it doesn't exist, download and extract SteamCMD
+    $steamCmdUrl = "https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip"
+    $steamCmdZip = Join-Path $env:TEMP "steamcmd.zip"
+
     Invoke-WebRequest -Uri $steamCmdUrl -OutFile $steamCmdZip
     Expand-Archive -Path $steamCmdZip -DestinationPath $steamCmdPath
     Remove-Item -Path $steamCmdZip
