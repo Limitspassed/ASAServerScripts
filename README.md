@@ -33,7 +33,7 @@ This is required to run scripts that are not digitally signed.
 Open a PowerShell terminal and navigate to the directory where the script is located. Run the script by executing:
 
 ```powershell
-.\setup-ark-ascended-server.ps1
+.\setup-asa-server.ps1
 ```
 Follow Prompts:
 You will be prompted to enter the path where you want to install SteamCMD. If SteamCMD is already installed at the specified path, it will not be re-downloaded. Next, you will be prompted to enter the path where you want to install the ARK: Survival Ascended server. If the directory does not exist, it will be created. The script will download SteamCMD (if needed), install or update the ARK: Survival Ascended server, and create a start.bat file in the Win64 folder for server startup.
