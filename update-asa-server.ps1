@@ -1,3 +1,12 @@
+# Prompt for the SteamCMD installation directory
+$steamCmdPath = Read-Host "Enter the path where SteamCMD is installed"
+
+# Check if the SteamCMD path exists
+if (-not (Test-Path $steamCmdPath)) {
+    Write-Host "SteamCMD directory does not exist at $steamCmdPath. Please make sure it's installed first."
+    exit
+}
+
 # Prompt for the ARK server installation directory
 $installPath = Read-Host "Enter the path where your ARK: Survival Ascended server is installed"
 
@@ -7,12 +16,12 @@ if (-not (Test-Path $installPath)) {
     exit
 }
 
-# Update ARK server using the correct AppID (2430930)
+# Specify the full path to your start.bat file
 $arkServerCmd = Join-Path $installPath "ShooterGame\Binaries\Win64\start.bat"
 
 # Check if the start.bat file exists
 if (-not (Test-Path $arkServerCmd)) {
-    Write-Host "start.bat file does not exist. Please create it first before running this update script."
+    Write-Host "start.bat file does not exist at $arkServerCmd. Please verify the path and create it if necessary."
     exit
 }
 
@@ -20,7 +29,7 @@ $forceInstallDir = "+force_install_dir $installPath"
 $appUpdate = "+app_update 2430930 validate"
 
 # Run the update command using SteamCMD
-$steamCmdPath = Join-Path $installPath "steamcmd.exe"
+$steamCmdPath = Join-Path $steamCmdPath "steamcmd.exe"
 & $steamCmdPath $forceInstallDir "+login anonymous" $appUpdate "+quit"
 
 # Start the ARK: Survival Ascended server
