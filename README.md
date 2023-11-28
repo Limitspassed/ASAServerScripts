@@ -7,12 +7,6 @@ This PowerShell script automates the process of setting up an ARK: Survival Asce
 I made a video showcasing and explaining what the code is doing:
 https://youtu.be/KuX95wxdd6w
 
-## Join Our ARK: Survival Ascended Community
-
-Join our Discord server to connect with other players, get updates, and chat with the community. We're here to help and have fun playing together!
-
-[Join Our Discord](https://discord.gg/ce4VPBxxAC)
-
 ## Prerequisites
 
 - Windows operating system
